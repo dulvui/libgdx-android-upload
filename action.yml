@@ -40,6 +40,7 @@ runs:
       run: ./gradlew android:assembleRelease
 
     - name: list android/build/outputs/apk/
+      shell: bash
       run: ls -la android/build/outputs/apk/
  
     - name: Publish to Play Store
