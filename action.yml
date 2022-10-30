@@ -35,10 +35,6 @@ runs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
-    - name: Create robovm ram disk to speed up build
-      shell: bash
-      run: SIZE=2048 ; diskutil erasevolume HFS+ 'RoboVM RAM Disk' `hdiutil attach -nomount ram://$((SIZE * 2048))`
-
     - name: Build the libGDX application
       shell: bash
       run: ./gradlew android:assembleRelease
