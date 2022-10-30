@@ -18,6 +18,13 @@ inputs:
   package-name:
     description: 'Android package name'
     required: true
+  keystore-alias:
+    description: 'Alias name of the keystore'
+    required: true
+  keystore-path:
+    description: 'Path to the keystore'
+    required: false
+    default: 'keystore.keystore'
   release-track:
     description: 'Release track: production, beta, alpha, internalsharing, internal'
     required: false
@@ -42,12 +49,21 @@ runs:
     - name: list android/build/outputs/apk/release
       shell: bash
       run: ls -la android/build/outputs/apk/release
- 
+      
+    - name: Align the unsigned APK
+      shell: bash
+      run: zipalign -v -p 4 android/build/outputs/apk/release/*.apk android/build/outputs/apk/release/unsigned-aligned.apk
+
+    - name: Sign APK
+      shell: bash
+      run: apksigner sign --ks ${{ inputs.keystore-path }} --out android/build/outputs/apk/release/signed-aligned.apk android/build/outputs/apk/release/unsigned-aligned.apk
+
+
     - name: Publish to Play Store
       uses: r0adkll/upload-google-play@v1
       with:
         serviceAccountJson: ${{ inputs.service-account-json }}
         packageName: ${{ inputs.package-name }}
-        releaseFiles: android/build/outputs/apk/release/*.apk
+        releaseFiles: android/build/outputs/apk/releasesigned-aligned.apk.apk
         track: ${{ inputs.release-track }}
         status: completed
