@@ -38,6 +38,9 @@ runs:
     - name: Build the libGDX application
       shell: bash
       run: ./gradlew android:assembleRelease
+
+    - name: list android/build/outputs/apk/
+      run: ls -la android/build/outputs/apk/
  
     - name: Publish to Play Store
       uses: r0adkll/upload-google-play@v1
