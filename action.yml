@@ -39,15 +39,15 @@ runs:
       shell: bash
       run: ./gradlew android:assembleRelease
 
-    - name: list android/build/outputs/apk/
+    - name: list android/build/outputs/apk/release
       shell: bash
-      run: ls -la android/build/outputs/apk/
+      run: ls -la android/build/outputs/apk/release
  
     - name: Publish to Play Store
       uses: r0adkll/upload-google-play@v1
       with:
         serviceAccountJson: ${{ inputs.service-account-json }}
         packageName: ${{ inputs.package-name }}
-        releaseFiles: android/build/outputs/apk/*.apk
+        releaseFiles: android/build/outputs/apk/release/*.apk
         track: ${{ inputs.release-track }}
         status: completed
