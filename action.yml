@@ -18,9 +18,6 @@ inputs:
   package-name:
     description: 'Android package name'
     required: true
-  keystore-alias:
-    description: 'Alias name of the keystore'
-    required: true
   keystore-path:
     description: 'Path to the keystore'
     required: false
