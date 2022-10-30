@@ -43,11 +43,28 @@ runs:
       shell: bash
       run: ./gradlew android:assembleRelease
 
+    - name: list android/build/outputs/apk/release
+      shell: bash
+      run: ls -la android/build/outputs/apk/release
+
+    - name: Generating private signing key
+      shell: bash
+      run: keytool -genkey -v -keystore ${{ inputs.keystore-path }} -keyalg RSA -keysize 2048 -validity 10000 -alias ${{ inputs.keystore-alias }}
+
+    - name: Align the unsigned APK
+      shell: bash
+      run: zipalign -v -p 4 android/build/outputs/apk/release/*.apk android/build/outputs/apk/release/unsigned-aligned.apk
+
+    - name: Sign APK
+      shell: bash
+      run: apksigner sign --ks ${{ inputs.keystore-path }} --out android/build/outputs/apk/release/signed-aligned.apk android/build/outputs/apk/release/unsigned-aligned.apk
+
+
     - name: Publish to Play Store
       uses: r0adkll/upload-google-play@v1
       with:
         serviceAccountJson: ${{ inputs.service-account-json }}
         packageName: ${{ inputs.package-name }}
-        releaseFiles: android/build/outputs/apk/*.apk
+        releaseFiles: android/build/outputs/apk/signed-aligned.apk
         track: ${{ inputs.release-track }}
         status: completed
