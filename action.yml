@@ -1,0 +1,53 @@
+
+name: 'libGDX iOS Release'
+description: 'libGDX: Build Android app and upload to Google Play Store'
+author: 'Simon Dalvai @dulvui'
+branding:
+  color: green
+  icon: upload-cloud
+
+inputs:
+  working-directory:
+    description: 'The working directory'
+    required: false
+    default: '.'
+  service-account-json:
+    description: 'Path to a valid Google service-account.json'
+    required: false
+    default: service-account.json
+  package-name:
+    description: 'Android package name'
+    required: true
+  release-track:
+    description: 'Release track: production, beta, alpha, internalsharing, internal'
+    required: false
+    default: 'internal'
+  
+runs:
+  using: "composite"
+  steps:
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: 11
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+
+    - name: Create robovm ram disk to speed up build
+      shell: bash
+      run: SIZE=2048 ; diskutil erasevolume HFS+ 'RoboVM RAM Disk' `hdiutil attach -nomount ram://$((SIZE * 2048))`
+
+    - name: Build the libGDX application
+      shell: bash
+      run: ./gradlew android:assembleRelease
+ 
+    - name: Publish to Play Store
+      uses: r0adkll/upload-google-play@v1
+      with:
+        serviceAccountJson: ${{ inputs.service-account-json }}
+        packageName: ${{ inputs.package-name }}
+        releaseFiles: android/build/outputs/apk/*.apk
+        track: ${{ inputs.release-track }}
+        status: completed
