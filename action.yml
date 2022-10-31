@@ -39,6 +39,19 @@ runs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
+
+    - name: Find zipalign 
+      shell: bash
+      run:  ls -la /usr/local/lib/android/sdk/tools/bin
+
+    - name: Find apksigner
+      shell: bash
+      run: ls -la /usr/local/lib/android/sdk/build-tools
+
+    - name: Find apksigner
+      shell: bash
+      run: ls -la /usr/local/lib/android/sdk/cmdline-tools
+
     - name: Build the libGDX application
       shell: bash
       run: ./gradlew android:assembleRelease
@@ -46,14 +59,6 @@ runs:
     - name: list android/build/outputs/apk/release
       shell: bash
       run: ls -la android/build/outputs/apk/release
-
-    - name: Find zipalign 
-      shell: bash
-      run:  ls -la /usr/local/lib/android/sdk/tools
-
-    - name: Find apksigner
-      shell: bash
-      run: ls -la /usr/local/lib/android/sdk/
 
     - name: Align the unsigned APK
       shell: bash
