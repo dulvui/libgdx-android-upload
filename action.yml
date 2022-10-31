@@ -49,15 +49,15 @@ runs:
 
     - name: Find zipalign 
       shell: bash
-      run: find . -name "zipalign"
+      run:  ls -la /usr/local/lib/android/sdk/tools
 
     - name: Find apksigner
       shell: bash
-      run: find . -name "apksigner"
+      run: ls -la /usr/local/lib/android/sdk/
 
     - name: Align the unsigned APK
       shell: bash
-      run: zipalign -v -p 4 android/build/outputs/apk/release/*.apk android/build/outputs/apk/release/unsigned-aligned.apk
+      run: /usr/local/lib/android/sdk/tools/zipalign -v -p 4 android/build/outputs/apk/release/*.apk android/build/outputs/apk/release/unsigned-aligned.apk
 
     - name: Sign APK
       shell: bash
