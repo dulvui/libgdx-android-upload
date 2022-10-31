@@ -53,11 +53,11 @@ runs:
 
     - name: Align the unsigned APK
       shell: bash
-      run: /usr/local/lib/android/sdk/cmdline-tools/latest/zipalign -v -p 4 android/build/outputs/apk/release/*.apk android/build/outputs/apk/release/unsigned-aligned.apk
+      run: /usr/local/lib/android/sdk/cmdline-tools/latest/bin/zipalign -v -p 4 android/build/outputs/apk/release/*.apk android/build/outputs/apk/release/unsigned-aligned.apk
 
     - name: Sign APK
       shell: bash
-      run: /usr/local/lib/android/sdk/cmdline-tools/latest/apksigner sign --ks ${{ inputs.keystore-path }} --out android/build/outputs/apk/release/signed-aligned.apk android/build/outputs/apk/release/unsigned-aligned.apk
+      run: /usr/local/lib/android/sdk/cmdline-tools/latest/bin/apksigner sign --ks ${{ inputs.keystore-path }} --out android/build/outputs/apk/release/signed-aligned.apk android/build/outputs/apk/release/unsigned-aligned.apk
 
     - name: Publish to Play Store
       uses: r0adkll/upload-google-play@v1
