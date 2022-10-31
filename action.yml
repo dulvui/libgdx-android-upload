@@ -41,7 +41,7 @@ runs:
 
     - name: Find apksigner
       shell: bash
-      run: ls -la /usr/local/lib/android/sdk/cmdline-tools/latest
+      run: ls -la /usr/local/lib/android/sdk/cmdline-tools/latest/bin
 
     - name: Build the libGDX application
       shell: bash
