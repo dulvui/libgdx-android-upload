@@ -41,11 +41,11 @@ runs:
 
     - name: list build-tools
       shell: bash
-      run: ls -la /usr/local/lib/android/sdk/build-tools/
+      run: ls -la /usr/local/lib/android/sdk/build-tools/33.0.0
 
-    - name: Install zipalign, apksigner
-      shell: bash
-      run: sudo apt install zipalign apksigner
+    # - name: Install zipalign, apksigner
+    #   shell: bash
+    #   run: sudo apt install zipalign apksigner
 
     - name: Build the libGDX application
       shell: bash
@@ -56,13 +56,13 @@ runs:
       run: ls -la android/build/outputs/apk/release
 
 
-    # - name: Align the unsigned APK
-    #   shell: bash
-    #   run: zipalign -v -p 4 android/build/outputs/apk/release/*.apk android/build/outputs/apk/release/unsigned-aligned.apk
+    - name: Align the unsigned APK
+      shell: bash
+      run: /usr/local/lib/android/sdk/build-tools/33.0.0/zipalign -v -p 4 android/build/outputs/apk/release/*.apk android/build/outputs/apk/release/unsigned-aligned.apk
 
     - name: Sign APK
       shell: bash
-      run: apksigner sign --ks ${{ inputs.keystore-path }} --out android/build/outputs/apk/release/signed-aligned.apk android/build/outputs/apk/release/unsigned-aligned.apk
+      run: /usr/local/lib/android/sdk/build-tools/33.0.0/apksigner sign --ks ${{ inputs.keystore-path }} --out android/build/outputs/apk/release/signed-aligned.apk android/build/outputs/apk/release/unsigned-aligned.apk
 
     - name: Publish to Play Store
       uses: r0adkll/upload-google-play@v1
