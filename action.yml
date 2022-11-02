@@ -41,7 +41,7 @@ runs:
 
     - name: list build-tools
       shell: bash
-      run: ls -la /usr/local/lib/android/sdk/build-tools/latest/
+      run: ls -la /usr/local/lib/android/sdk/build-tools/
 
     - name: Install zipalign, apksigner
       shell: bash
