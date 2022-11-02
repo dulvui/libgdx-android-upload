@@ -68,7 +68,7 @@ runs:
 
     - name: Sign APK
       shell: bash
-      run: /usr/local/lib/android/sdk/build-tools/33.0.0/apksigner sign --ks ${{ inputs.keystore-path }} --ks-pass ${{ inputs.keystore-password }} --ks-alias ${{ inputs.keystore-alias }} --out android/build/outputs/apk/release/signed-aligned.apk android/build/outputs/apk/release/unsigned-aligned.apk
+      run: /usr/local/lib/android/sdk/build-tools/33.0.0/apksigner sign --ks ${{ inputs.keystore-path }} --ks-pass ${{ inputs.keystore-password }} --ks-key-alias ${{ inputs.keystore-alias }} --out android/build/outputs/apk/release/signed-aligned.apk android/build/outputs/apk/release/unsigned-aligned.apk
 
     - name: Publish to Play Store
       uses: r0adkll/upload-google-play@v1
