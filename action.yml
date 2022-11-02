@@ -39,6 +39,10 @@ runs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
+    - name: list build-tools
+      shell: bash
+      run: ls -la /usr/local/lib/android/sdk/build-tools/latest/
+
     - name: Install zipalign, apksigner
       shell: bash
       run: sudo apt install zipalign apksigner
@@ -50,6 +54,7 @@ runs:
     - name: list android/build/outputs/apk/release
       shell: bash
       run: ls -la android/build/outputs/apk/release
+
 
     # - name: Align the unsigned APK
     #   shell: bash
