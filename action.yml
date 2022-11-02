@@ -51,9 +51,9 @@ runs:
       shell: bash
       run: ls -la android/build/outputs/apk/release
 
-    - name: Align the unsigned APK
-      shell: bash
-      run: zipalign -v -p 4 android/build/outputs/apk/release/*.apk android/build/outputs/apk/release/unsigned-aligned.apk
+    # - name: Align the unsigned APK
+    #   shell: bash
+    #   run: zipalign -v -p 4 android/build/outputs/apk/release/*.apk android/build/outputs/apk/release/unsigned-aligned.apk
 
     - name: Sign APK
       shell: bash
