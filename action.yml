@@ -1,5 +1,5 @@
 
-name: 'libGDX iOS Release'
+name: 'libGDX Android Release'
 description: 'libGDX: Build Android app and upload to Google Play Store'
 author: 'Simon Dalvai @dulvui'
 branding:
