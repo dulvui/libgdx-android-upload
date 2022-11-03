@@ -1,5 +1,6 @@
 # libgdx-android-release
 Github Action to release an Android libGDX application to Google Play Store
+If you have problems with the action or need help simply open an issue.
 
 ## Table of contents
 - [libgdx-android-release](#libgdx-android-release)
