@@ -1,9 +1,9 @@
-# libgdx-android-release
-Github Action to release an Android libGDX application to Google Play Store
+# libgdx-android-upload
+Github Action to upload an Android libGDX application to Google Play Store
 If you have problems with the action or need help simply open an issue.
 
 ## Table of contents
-- [libgdx-android-release](#libgdx-android-release)
+- [libgdx-android-upload](#libgdx-android-upload)
   - [Table of contents](#table-of-contents)
   - [Requirements](#requirements)
   - [Parameters](#parameters)
@@ -24,7 +24,7 @@ If you have problems with the action or need help simply open an issue.
 
 ## Working examples
 You an find a working examples here:  
-https://github.com/dulvui/sn4ke/blob/main/.github/workflows/release-android.yml
+https://github.com/dulvui/sn4ke/blob/main/.github/workflows/upload-android.yml
 
 ## License
 This software is licensed under the [MIT license](LICENSE).
