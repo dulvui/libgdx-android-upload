@@ -40,6 +40,6 @@ runs:
       with:
         serviceAccountJson: ${{ inputs.service-account-json }}
         packageName: ${{ inputs.package-name }}
-        releaseFiles: android/build/outputs/apk/release/*.aab
+        releaseFiles: android/build/outputs/aab/release/*.aab
         track: ${{ inputs.release-track }}
         status: completed
