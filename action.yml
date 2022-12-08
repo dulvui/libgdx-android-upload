@@ -33,13 +33,13 @@ runs:
 
     - name: Build the libGDX application
       shell: bash
-      run: ./gradlew android:assembleRelease
+      run: ./gradlew android:bundleRelease
 
     - name: Publish to Play Store
       uses: r0adkll/upload-google-play@v1
       with:
         serviceAccountJson: ${{ inputs.service-account-json }}
         packageName: ${{ inputs.package-name }}
-        releaseFiles: android/build/outputs/apk/release/*.apk
+        releaseFiles: android/build/outputs/apk/release/*.aab
         track: ${{ inputs.release-track }}
         status: completed
