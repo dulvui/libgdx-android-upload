@@ -31,11 +31,6 @@ runs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
-    - name: Make sure libgdx.so is copied
-      shell: bash
-      run: ./gradlew android:copyAndroidNatives
-
-
     - name: Build the libGDX application
       shell: bash
       run: ./gradlew android:bundleRelease
