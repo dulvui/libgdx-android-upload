@@ -35,11 +35,19 @@ runs:
       shell: bash
       run: ./gradlew android:bundleRelease
 
+    - name: install tree
+      shell: bash
+      run: sudo apt install tree
+
+    - name: List tree of android folder
+      shell: bash
+      run: tree android/build/
+
     - name: Publish to Play Store
       uses: r0adkll/upload-google-play@v1
       with:
         serviceAccountJson: ${{ inputs.service-account-json }}
         packageName: ${{ inputs.package-name }}
-        releaseFiles:  android/build/outputs/bundle/*.aab
+        releaseFiles:  android/build/outputs/bundle/release/*.aab
         track: ${{ inputs.release-track }}
         status: completed
