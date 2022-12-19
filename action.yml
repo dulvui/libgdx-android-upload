@@ -41,10 +41,9 @@ runs:
 
     - name: Publish to Play Store
       uses: r0adkll/upload-google-play@v1
-      working-directory: ${{ inputs.working-directory }}
       with:
         serviceAccountJson: ${{ inputs.service-account-json }}
         packageName: ${{ inputs.package-name }}
-        releaseFiles:  android/build/outputs/bundle/release/*.aab
+        releaseFiles:  ${{ inputs.working-directory }}/android/build/outputs/bundle/release/*.aab
         track: ${{ inputs.release-track }}
         status: completed
