@@ -21,6 +21,7 @@ If you have problems with the action or need help simply open an issue.
 | package-name | true |   | Android package name |
 | release-track | false | internal  | Release track: production, beta, alpha, internalsharing, internal |
 | service-account-json | false | service-account.json | Path tho your Google service-account.json file  |
+| working-directory | false | . | Path to the source code of the game |
 
 ## Working examples
 You an find a working examples here:  
