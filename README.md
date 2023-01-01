@@ -22,6 +22,7 @@ If you have problems with the action or need help simply open an issue.
 | release-track | false | internal  | Release track: production, beta, alpha, internalsharing, internal |
 | service-account-json | false | service-account.json | Path tho your Google service-account.json file  |
 | working-directory | false | . | Path to the source code of the game |
+| changes-not-sent-for-review | false | false | Indicates that the changes in this edit will not be reviewed until they are explicitly sent for review from the Google Play Console. |
 
 ## Working examples
 You an find a working examples here:  
