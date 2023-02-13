@@ -44,7 +44,7 @@ runs:
       run: ./gradlew android:bundleRelease
 
     - name: Publish to Play Store
-      uses: r0adkll/upload-google-play@v1.0.18
+      uses: r0adkll/upload-google-play@v1.1.1
       with:
         serviceAccountJson: ${{ inputs.service-account-json }}
         packageName: ${{ inputs.package-name }}
