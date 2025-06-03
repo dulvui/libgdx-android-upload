@@ -1,3 +1,7 @@
+# ARCHIVED
+This action has been archived and will no longer be maintained.
+Please create your own fork.
+
 # libgdx-android-upload
 Github Action to upload an Android libGDX application to Google Play Store
 If you have problems with the action or need help simply open an issue.
